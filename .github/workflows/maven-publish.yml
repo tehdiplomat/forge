@@ -22,7 +22,14 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+    - name: Install virtual framebuffer (if not available) to allow running GUI on a headless server
+      run: command -v Xvfb >/dev/null 2>&1 || { sudo apt update && sudo apt install -y xvfb; }
+
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -U -B clean -P windows-linux install -T 1C
+    
+      run: |
+        export DISPLAY=":1"
+        Xvfb :1 -screen 0 800x600x8 &
+        mvn -U -B clean -P windows-linux install -T 1C
       env:
         GITHUB_TOKEN: ${{ github.token }}
