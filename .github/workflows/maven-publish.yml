@@ -25,6 +25,11 @@ jobs:
     - name: Install virtual framebuffer (if not available) to allow running GUI on a headless server
       run: command -v Xvfb >/dev/null 2>&1 || { sudo apt update && sudo apt install -y xvfb; }
 
+    - name: Configure Git User
+      run: |
+        git config user.email "actions@github.com"
+        git config user.name "GitHub Actions"
+
     - name: Build/Install/Publish to GitHub Packages Apache Maven
     
       run: |
