@@ -39,3 +39,5 @@ jobs:
         mvn -U -B clean -P windows-linux install release:clean release:prepare release:perform -T 1C
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        MAVEN_USERNAME: ${{ secrets.FTP_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.FTP_PASSWORD }}
