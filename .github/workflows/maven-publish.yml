@@ -31,21 +31,11 @@ jobs:
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
 
-    - name: Create m2 settings file
-      uses: s4u/maven-settings-action@v2.3.0
-      with:
-          servers: |
-            [{
-                "id": "cardforge-repo",
-                "username": "${{ secrets.FTP_USERNAME }}",
-                "password": "${{ secrets.FTP_PASSWORD }}"
-            }]
-
     - name: Build/Install/Publish to GitHub Packages Apache Maven
     
       run: |
         export DISPLAY=":1"
         Xvfb :1 -screen 0 800x600x8 &
-        mvn -U -B clean -P windows-linux install release:clean release:prepare release:perform -T 1C
+        mvn -U -B clean -P windows-linux install release:clean release:prepare release:perform -T 1C -Dcardforge-repo.username=${{ secrets.FTP_USERNAME }}  -Dcardforge-repo.password=${{ secrets.FTP_PASSWORD }}
       env:
         GITHUB_TOKEN: ${{ github.token }}
