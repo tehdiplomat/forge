@@ -20,7 +20,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'maven'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        server-id: cardforge-repo
+        server-username: ${{ secrets.FTP_USERNAME }}
+        server-password: ${{ secrets.FTP_PASSWORD }}
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Install virtual framebuffer (if not available) to allow running GUI on a headless server
@@ -31,13 +33,7 @@ jobs:
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
 
-    - name: maven-settings-xml-action
-      uses: whelk-io/maven-settings-xml-action@v20
-      with:
-        servers: '[{ "id": "cardforge-repo", "username": "${{ secrets.FTP_USERNAME }}", "password": "${{ secrets.FTP_PASSWORD }}" }]'
-
     - name: Build/Install/Publish to GitHub Packages Apache Maven
-    
       run: |
         export DISPLAY=":1"
         Xvfb :1 -screen 0 800x600x8 &
