@@ -35,5 +35,4 @@ jobs:
     
     - name: Check settings after xml action
       run: |
-        cat ~/.m2/settings.xml |
-        cat ${{ github.workspace }}
+        cat ~/.m2/settings.xml
