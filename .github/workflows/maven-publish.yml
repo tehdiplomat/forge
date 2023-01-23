@@ -31,6 +31,11 @@ jobs:
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
 
+    - name: maven-settings-xml-action
+      uses: whelk-io/maven-settings-xml-action@v20
+      with:
+        servers: '[{ "id": "cardforge-repo", "username": "${{ secrets.FTP_USERNAME }}", "password": "${{ secrets.FTP_PASSWORD }}" }]'
+
     - name: Build/Install/Publish to GitHub Packages Apache Maven
     
       run: |
