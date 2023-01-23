@@ -1,4 +1,4 @@
-name: Publish Forge
+name: Maven test for settings
 
 on:
   workflow_dispatch:
