@@ -41,7 +41,7 @@ jobs:
         
     - name: Check settings after xml action
       run: |
-        cat .mvn/local-settings.xml
+        cat ${{ github.workspace }}/.mvn/local-settings.xml
         
     - name: Where are maven settings
       run: |
