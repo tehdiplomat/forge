@@ -45,4 +45,4 @@ jobs:
         
     - name: Where are maven settings
       run: |
-        mvn -X clean | grep "settings"
+        mvn -X clean -Dcardforge-repo.username=${{ secrets.FTP_USERNAME }} -Dcardforge-repo.password=${{ secrets.FTP_PASSWORD }} | grep "settings"
