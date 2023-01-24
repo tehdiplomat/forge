@@ -38,3 +38,6 @@ jobs:
     - name: Check settings after xml action
       run: |
         cat ~/.m2/settings.xml
+        
+    - name: Where are maven settings
+        mvn -X clean | grep "settings"
