@@ -37,6 +37,6 @@ jobs:
       run: |
         export DISPLAY=":1"
         Xvfb :1 -screen 0 800x600x8 &
-        mvn -U -B clean -P windows-linux install release:clean release:prepare release:perform -T 1C -X
+        mvn -U -B clean -P windows-linux install release:clean release:prepare release:perform -T 1C
       env:
         GITHUB_TOKEN: ${{ github.token }}
