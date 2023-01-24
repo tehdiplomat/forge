@@ -15,8 +15,8 @@
     <servers>
         <server>
             <id>cardforge-repo</id>
-            <username>${env.FTP_USERNAME}</username>
-            <password>${env.FTP_PASSWORD}</password>
+            <username>${cardforge-repo.username}</username>
+            <password>${cardforge-repo.password}</password>
         </server>
     </servers>
 </settings>
