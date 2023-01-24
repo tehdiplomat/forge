@@ -40,4 +40,5 @@ jobs:
         cat ~/.m2/settings.xml
         
     - name: Where are maven settings
+      run: |
         mvn -X clean | grep "settings"
