@@ -16,7 +16,6 @@ on:
 
 jobs:
   build:
-    if: github.repository_owner == 'Card-Forge'
     runs-on: ubuntu-latest
     permissions:
       contents: write
